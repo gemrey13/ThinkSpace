@@ -1,7 +1,13 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
-  return <div className="text-2xl text-red-700 font-bold">App</div>;
+  return (
+    <Routes>
+      <Route path="" element={<Dashboard />} />
+    </Routes>
+  );
 };
 
 export default App;
