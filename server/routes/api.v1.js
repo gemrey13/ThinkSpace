@@ -24,6 +24,19 @@ router.post('/thoughts', async (req, res) => {
 router.get('/thoughts', async (req, res) => {
     try {
         const thoughts = await Thought.find();
+        res.status(200).json({
+            count: thoughts.length,
+            data: thoughts
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
+router.get('/thoughts/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const thoughts = await Thought.findById(id);
         res.status(200).json(thoughts);
     } catch (error) {
         res.status(500).json({ message: error.message });

@@ -1,7 +1,11 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
+
 import APIV1 from './routes/api.v1.js';
+
+
 
 dotenv.config();
 
@@ -10,7 +14,7 @@ const mongo_uri = process.env.MONGO_URI;
 
 const app = express();
 app.use(express.json());
-
+app.use(cors())
 app.use("/api/v1", APIV1);
 
 
